@@ -1,0 +1,67 @@
+<html>
+<head>
+        <link href='https://fonts.googleapis.com/css?family=Bungee' rel='stylesheet'>
+        
+<style>
+
+    
+    
+</style>
+<title>
+        Video Clash!
+</title>
+        <link rel="stylesheet" type = "text/css" href="style.css">
+        <!-- Style sheet ref-->
+</head>
+
+<body>
+        <div class="video-background">
+                <div class="video-foreground">
+                  <iframe src="https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+    <br>
+    <br>
+    
+    <form method="post">
+        <p>
+            <label for="video_name"><font color="white">Video Name:</font></label>
+            <input type="text" placeholder="Enter a Video Name" name="video_name" id="video_name">
+        </p>
+        <p>
+            <label for="video_url"><font color="white">Enter a embedded YouTube Link:</font></label>
+            <input type="text" placeholder="Enter a Youtube Link" name="video_name" id="video_url">
+        </p>
+        <input type="submit" value="Submit" onclick="addtoDB()">
+        <input type="submit" value="Back" onclick="goHome(); return false;">
+    </form>
+    <script>
+        function addtoDB() 
+        {
+            var xhttp;
+
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                document.getElementById("submitted").innerHTML = "form submitted";
+            }
+            };
+
+            var video_name = document.getElementById('video_name').value;
+            var video_url = document.getElementById('video_url').value;
+
+            var queryString = "?video_name=" + video_name +  "&video_url=" + video_url;
+
+            xhttp.open("GET", "load.php" + queryString, true);
+            xhttp.send(null);
+        }
+
+        function goHome()
+        {
+             window.location.replace("./index.html")
+        }
+    </script>
+    
+</body>
+
+</html>
